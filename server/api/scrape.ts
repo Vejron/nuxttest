@@ -7,48 +7,56 @@ const mapping = {
     length: 3.6,
     electric: true,
     payed: false,
+    location: [63.8947518, 19.9063089]
   },
   "Bräntevägens skidspår, 0,7 km (Holmsund)": {
     name: "Bräntevägen",
     length: 0.7,
     electric: false,
     payed: false,
+    location: [63.70083, 20.382278]
   },
   "Bräntevägens skidspår, 1,5 km (elljus, Holmsund)": {
     name: "Bräntevägen",
     length: 1.5,
     electric: true,
     payed: false,
+    location: [63.70083, 20.382278]
   },
   "Bräntevägens skidspår, 3,3 km (elljus, Holmsund)": {
     name: "Bräntevägen",
     length: 3.3,
     electric: true,
     payed: false,
+    location: [63.70083, 20.382278]
   },
   "Bräntevägens skidspår, 4,4 km (elljus, Holmsund)": {
     name: "Bräntevägen",
     length: 4.4,
     electric: true,
     payed: false,
+    location: [63.70083, 20.382278]
   },
   "Ersboda skidspår, 1,5 km (elljus)": {
     name: "Ersboda",
     length: 1.5,
     electric: true,
     payed: false,
+    location: [63.863704, 20.314236]
   },
   "Ersboda skidspår, 4,1 km (elljus)": {
     name: "Ersboda",
     length: 4.1,
     electric: true,
     payed: false,
+    location: [63.863704, 20.314236]
   },
   "Ersbodaängarnas skidspår": {
     name: "Ersbodaängarna",
     length: 1,
     electric: false,
     payed: false,
+    location: [63.859932, 20.317175]
   },
   "Flurkmarks skidspår, 2,3 km (elljus)": {
     name: "Flurkmark",
