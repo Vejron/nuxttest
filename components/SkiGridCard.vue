@@ -76,7 +76,7 @@
                   class="text-2xl mb-4 leading-6 font-medium text-gray-900"
                   >{{data.name}}</DialogTitle
                 >
-                <TrackMap></TrackMap>
+                <TrackMap :data="data"></TrackMap>
               </div>
             </div>
             <div class="mt-5 sm:mt-6">
@@ -112,6 +112,7 @@ const props = defineProps({
     date: string;
     length: number;
     electric: boolean;
+    location: any[];
   }>,
 });
 

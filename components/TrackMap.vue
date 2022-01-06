@@ -1,5 +1,5 @@
 <template>
-    <div :data="data" id="mainMapContainer" class="h-96 w-full"></div>
+    <div id="mainMapContainer" class="h-96 w-full"></div>
 </template>
 
 <script setup lang="ts">
@@ -14,6 +14,7 @@ const props = defineProps({
     date: string;
     length: number;
     electric: boolean;
+    location: number[];
   }>,
 });
 
@@ -24,8 +25,8 @@ const { $L } = useNuxtApp();
 const open = ref(false);
 
 onMounted( async () => {
-  console.log("HELLO", $L);
-  map = setupLeafletMap();
+  console.log("HELLO", props.data);
+  map = setupLeafletMap(props.data.location);
   const b = await getForecast();
   console.log('bbb', b);
 });
@@ -34,10 +35,10 @@ onUnmounted(() => {
   console.log("destroy map now");
   map.remove();
 })
-const setupLeafletMap = () => {
+const setupLeafletMap = (location: any) => {
   const map = $L
     .map("mainMapContainer", { zoomControl: false })
-    .setView([63.8252223, 20.2369007], 11);
+    .setView(location, 14);
   $L.control
     .zoom({
       position: "topright",
@@ -48,6 +49,7 @@ const setupLeafletMap = () => {
       layers: "Projektkarta_V2",
     })
     .addTo(map);
+    $L.marker(location).addTo(map);
   return map;
 };
 </script>
