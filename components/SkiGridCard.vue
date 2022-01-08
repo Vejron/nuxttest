@@ -70,13 +70,15 @@
           >
             <div>
              
-              <div class="text-center">
+              <div class="text-center flex flex-col relative">
                 <DialogTitle
                   as="h2"
                   class="text-2xl mb-4 leading-6 font-medium text-gray-900"
                   >{{data.name}}</DialogTitle
                 >
-                <TrackMap :data="data"></TrackMap>
+                <TrackMap class="relative h-[60vh]" :data="data"></TrackMap>
+                <Plot class="absolute bottom-0 z-2000" :data="data"></Plot>
+                
               </div>
             </div>
             <div class="mt-5 sm:mt-6">
@@ -125,3 +127,9 @@ const color = computed(() => {
   return ["#71EF77", "#F8C084", "#E78497"][daysAgo] ?? "#8FC7FD";
 });
 </script>
+
+<style scoped>
+.map-part {
+  height: calc(60vh - 200px);
+}
+</style>

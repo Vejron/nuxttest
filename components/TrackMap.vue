@@ -1,5 +1,5 @@
 <template>
-    <div id="mainMapContainer" class="h-96 w-full"></div>
+    <div id="mainMapContainer" class="w-full"></div>
 </template>
 
 <script setup lang="ts">
@@ -24,11 +24,8 @@ const { $L } = useNuxtApp();
 
 const open = ref(false);
 
-onMounted( async () => {
-  console.log("HELLO", props.data);
+onMounted(() => {
   map = setupLeafletMap(props.data.location);
-  const b = await getForecast();
-  console.log('bbb', b);
 });
 
 onUnmounted(() => {
