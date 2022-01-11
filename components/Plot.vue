@@ -7,7 +7,7 @@ import { PropType } from "vue";
 
 import "uplot/dist/uPlot.min.css";
 import { getForecast } from "~~/services/smhi.service";
-
+const emit = defineEmits(['temp']);
 const props = defineProps({
   data: Object as PropType<{
     name: string;
@@ -39,6 +39,8 @@ onMounted(async () => {
   const res = await getForecast(props.data.location);
   console.log(res);
   const temperatures = res.timeSeries.map(point => point.parameters[1].values[0]);
+  emit('temp', temperatures[0]);
+  console.log('tem', temperatures[0])
   const times = res.timeSeries.map(point => Math.floor(new Date(point.validTime).valueOf() / 1000));
   const width = target.value.clientWidth;
   let opts = {

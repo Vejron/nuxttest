@@ -69,16 +69,25 @@
             class="inline-block align-bottom bg-white rounded-lg p-4 text-left overflow-hidden shadow-xl transform transition-all w-full max-w-5xl mx-2"
           >
             <div>
-             
-              <div class="text-center flex flex-col relative">
-                <DialogTitle
-                  as="h2"
-                  class="text-2xl mb-4 leading-6 font-medium text-gray-900"
-                  >{{data.name}}</DialogTitle
-                >
+              <div class="flex flex-col relative">
+                <div class="mb-4 flex justify-between flex-wrap items-center">
+                  <DialogTitle
+                    as="h2"
+                    class="text-2xl leading-8 font-medium text-gray-900"
+                    >{{ data.name }}</DialogTitle
+                  >
+                  <p class="whitespace-nowrap leading-8">
+                    <span>Aktuell temperatur&nbsp;</span>
+                    <span :class="[firstTemp > 0? ' text-red-500': ' text-blue-500', 'font-semibold']">{{firstTemp}} °C</span>
+                  </p>
+                </div>
+
                 <TrackMap class="relative h-[60vh]" :data="data"></TrackMap>
-                <Plot class="absolute bottom-0 z-2000" :data="data"></Plot>
-                
+                <Plot
+                  class="absolute bottom-0 z-2000"
+                  @temp="firstTemp = $event"
+                  :data="data"
+                ></Plot>
               </div>
             </div>
             <div class="mt-5 sm:mt-6">
@@ -119,6 +128,7 @@ const props = defineProps({
 });
 
 const open = ref(false);
+const firstTemp = ref(0);
 
 const timeAgo = useTimeAgo(props.data.date);
 const color = computed(() => {
